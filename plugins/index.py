@@ -44,14 +44,14 @@ async def index_files(bot, query):
 async def send_for_index(bot, message):
     if message.forward_from_chat.type != 'channel':
         return
-    
+
     last_msg_id = message.forward_from_message_id
     chat_id = message.forward_from_chat.username or message.forward_from_chat.id
     try:
         await bot.get_messages(chat_id, last_msg_id)
     except:
         return await message.reply('Make Sure That Iam An Admin In The Channel, if channel is private')
-    
+
     if message.from_user.id in ADMINS:
         buttons = [
             [
@@ -94,7 +94,7 @@ async def set_skip_number(bot, message):
         except:
             return await message.reply("Skip number should be an integer.")
         await message.reply(f"Succesfully set SKIP number as {skip}")
-        temp.CURRENT=int(skip)
+        temp.CURRENT = skip
     else:
         await message.reply("Give me a skip number")
 
